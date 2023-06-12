@@ -1,3 +1,5 @@
+package constants;
+
 import java.util.ArrayList;
 
 public class CryptographicAlphabet {

@@ -1,7 +1,13 @@
+import commands.BruteForce;
+import commands.CryptionText;
+import commands.DecryptionText;
+import commands.StaticMethodOfDecryptionText;
+import constants.CryptographicAlphabet;
+
 import java.io.*;
 import java.util.Scanner;
 
-public class Main {
+public class Application {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello! It's program of crypt/decrypt text. \n" +

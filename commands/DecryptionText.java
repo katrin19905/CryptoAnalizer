@@ -1,3 +1,7 @@
+package commands;
+
+import constants.CryptographicAlphabet;
+
 import java.io.*;
 import java.util.ArrayList;
 

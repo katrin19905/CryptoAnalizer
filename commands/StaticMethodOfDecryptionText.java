@@ -1,3 +1,8 @@
+package commands;
+
+import commands.DecryptionText;
+import constants.CryptographicAlphabet;
+
 import java.io.*;
 
 public class StaticMethodOfDecryptionText {
@@ -49,7 +54,7 @@ public class StaticMethodOfDecryptionText {
             bufferedReader.read(cryptText);
             Character charInNoCryptText = getChar(nocryptText);
             Character charInCryptText = getChar(cryptText);
-            // найдем индексы char'ов в алфавите и вычислим сдвиг. далее вызовем метод cryptText класса DecryptionText
+            // найдем индексы char'ов в алфавите и вычислим сдвиг. далее вызовем метод cryptText класса commands.DecryptionText
             int indexOfCharInNoCrypText = CryptographicAlphabet.cryptographicAlphabetForStatic.indexOf(Character.toLowerCase(charInNoCryptText));
             int indexOfCharInCryptText = CryptographicAlphabet.cryptographicAlphabetForStatic.indexOf(Character.toLowerCase(charInCryptText));
             rotate = indexOfCharInCryptText - indexOfCharInNoCrypText;

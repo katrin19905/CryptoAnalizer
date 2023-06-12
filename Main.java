@@ -80,7 +80,7 @@ public class Main {
             }
 
             case "ALPHABET" -> {
-                System.out.println(CryptographicAlphabet.cryptographicAlphabet.toString());
+                System.out.println(CryptographicAlphabet.cryptographicAlphabet);
             }
         }
     }

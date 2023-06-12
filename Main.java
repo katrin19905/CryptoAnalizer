@@ -72,7 +72,7 @@ public class Main {
                                 "third path to .txt empty file which will be result.\n" +
                                 "Please use same text for analyze and for decrypt\n");
                         StaticMethodOfDecryptionText.staticDecryptMethod(scanner.nextLine(), scanner.nextLine(), scanner.nextLine());
-                        System.out.println("Static decrypt method finished! Check file.");
+                        System.out.println("Static decrypt method finished! Check file");
                     }
                 }
 

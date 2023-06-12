@@ -76,7 +76,7 @@ public class DecryptionText {
          если да -получаем новый индекс - результат разности прибавляем к размеру массива.
         */
         if ((index - position)<0) {
-            int newIndex = alphabet.size()+(index - position);
+            int newIndex = alphabet.size()+(index - position) ;
             bufferedWriter.write((int)alphabet.get(newIndex));
         } else {
             bufferedWriter.write((int)alphabet.get(index - position));

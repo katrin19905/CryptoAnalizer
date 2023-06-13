@@ -9,8 +9,8 @@ public class BruteForce {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(pathInput));
              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(pathOutput))) {
 
-
                 // считаем массив char:
+
                 char[] cryptText = new char[65536];
                 bufferedReader.read(cryptText);
                 /*
@@ -23,8 +23,10 @@ public class BruteForce {
                 for (int i = 1; i <= CryptographicAlphabet.cryptographicAlphabet.size(); i++) {
                     char[] leftRotateCryptText = checkCharWithLeftRotate(cryptText, i);
                     char[] rightRotateCryptText = checkCharWithRightRotate(cryptText, i);
+
                     boolean leftRotate = checking(leftRotateCryptText);
                     boolean rightRotate = checking(rightRotateCryptText);
+
                     if (leftRotate) {
                         bufferedWriter.write(leftRotateCryptText);
                         break;
@@ -40,25 +42,26 @@ public class BruteForce {
 
     public static boolean checking(char[] rotateCryptText) {
         boolean result = false;
-        for (int i = 0; i < rotateCryptText.length-1; i++) {
-            if ((rotateCryptText[i]=='.' && rotateCryptText[i+1]==' ') || (rotateCryptText[i]==',' && rotateCryptText[i+1]==' ') || (rotateCryptText[i]==':' && rotateCryptText[i+1]==' ') || (rotateCryptText[i]=='?' && rotateCryptText[i+1]==' ')) {
+        for (int i = 0; i < rotateCryptText.length-2; i++) {
+            if ((rotateCryptText[i]=='.' && rotateCryptText[i+1]==' ' && Character.isUpperCase(rotateCryptText[i+2])) || (rotateCryptText[i]=='?' && rotateCryptText[i+1]==' ' && Character.isUpperCase(rotateCryptText[i+2])) || (rotateCryptText[i]=='!' && rotateCryptText[i+1]==' ' && Character.isUpperCase(rotateCryptText[i+2]))) {
                 result = true;
             }
         }
+
         return result;
     }
 
     public static char[] checkCharWithRightRotate(char[] cryptText, int rotate) {
         char[] newTextWithRightRotate = new char[65536];
+        int i = 0; // индексы нового массива
         for (Character newChar : cryptText) {
 
             // получим индекс из алфавита, в нижнем регистре на случай заглавной буквы
             int index = CryptographicAlphabet.cryptographicAlphabet.indexOf(Character.toLowerCase(newChar));
             if (index == -1) {
-                break;
+                continue;
             }
             // проверим на регист и вызываем методы проверки границ - они должны вернуть новый char
-            int i = 0; // индексы нового массива
             if (newChar.equals(CryptographicAlphabet.cryptographicAlphabet.get(index))) {
                 newTextWithRightRotate[i] = getNewCharWithRightRotate(index, rotate);
             }
@@ -111,21 +114,21 @@ public class BruteForce {
             int index = CryptographicAlphabet.cryptographicAlphabet.indexOf(Character.toLowerCase(newChar));
             // проверим на регист и вызываем методы проверки границ - они должны вернуть новый char
             if (index == -1) {
-                break;
+                continue;
             }
 
             if (newChar.equals(CryptographicAlphabet.cryptographicAlphabet.get(index))) {
-                newTextWithLeftRotate[i] = getNewChar(index, rotate);
+                newTextWithLeftRotate[i] = getNewCharWithLeftRotate(index, rotate);
             }
             else {
-                newTextWithLeftRotate[i] = getNewCharInUpperCase(index, rotate);
+                newTextWithLeftRotate[i] = getNewCharInUpperCaseWithLeftRotate(index, rotate);
             }
             i++;
         }
         return newTextWithLeftRotate;
     }
 
-    public static char getNewCharInUpperCase(int index, int rotate) {
+    public static char getNewCharInUpperCaseWithLeftRotate(int index, int rotate) {
         /*
          проверяем условие: разность индекса и сдвига меньше нуля (выход за пределы массива)
          если да -получаем новый индекс - результат разности прибавляем к размеру массива.
@@ -142,7 +145,7 @@ public class BruteForce {
         return result;
     }
 
-    public static char getNewChar(int index, int rotate) {
+    public static char getNewCharWithLeftRotate(int index, int rotate) {
         /*
          проверяем условие: разность индекса и сдвига меньше нуля (выход за пределы массива)
          если да -получаем новый индекс - результат разности прибавляем к размеру массива.

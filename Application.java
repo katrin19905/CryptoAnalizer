@@ -38,11 +38,10 @@ public class Application {
                     }
                     case "STATIC" -> {
                         System.out.println("Please enter one path to .txt file for crypt, \n" +
-                                "second path to .txt empty file which will be result,\n" +
-                                "and count of rotate");
+                                "second path to .txt empty file which will be result");
                         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(scanner.nextLine()));
                              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(scanner.nextLine()))) {
-                            CryptionText.cryptTextWithWhitespaces(bufferedReader, bufferedWriter, scanner.nextInt(), CryptographicAlphabet.cryptographicAlphabetForStatic);
+                            CryptionText.cryptTextWithWhitespaces(bufferedReader, bufferedWriter, CryptographicAlphabet.cryptographicAlphabetForStatic);
                         }
                         System.out.println("Cryption is success! Now you can to use static decrypt method");
                     }

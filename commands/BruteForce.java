@@ -11,7 +11,7 @@ public class BruteForce {
 
                 // считаем массив char:
 
-                char[] cryptText = new char[65536];
+                char[] cryptText = new char[45000];
                 bufferedReader.read(cryptText);
                 /*
                 вызываем метод : проверяем регистр + вызываем новые методы - делаем сдвиги и получаем новые массивы.
@@ -23,10 +23,8 @@ public class BruteForce {
                 for (int i = 1; i <= CryptographicAlphabet.cryptographicAlphabet.size(); i++) {
                     char[] leftRotateCryptText = checkCharWithLeftRotate(cryptText, i);
                     char[] rightRotateCryptText = checkCharWithRightRotate(cryptText, i);
-
                     boolean leftRotate = checking(leftRotateCryptText);
                     boolean rightRotate = checking(rightRotateCryptText);
-
                     if (leftRotate) {
                         bufferedWriter.write(leftRotateCryptText);
                         break;
@@ -42,17 +40,25 @@ public class BruteForce {
 
     public static boolean checking(char[] rotateCryptText) {
         boolean result = false;
-        for (int i = 0; i < rotateCryptText.length-2; i++) {
-            if ((rotateCryptText[i]=='.' && rotateCryptText[i+1]==' ' && Character.isUpperCase(rotateCryptText[i+2])) || (rotateCryptText[i]=='?' && rotateCryptText[i+1]==' ' && Character.isUpperCase(rotateCryptText[i+2])) || (rotateCryptText[i]=='!' && rotateCryptText[i+1]==' ' && Character.isUpperCase(rotateCryptText[i+2]))) {
+        for (int i = 0; i < rotateCryptText.length-4; i++) {
+            if ((rotateCryptText[i]==' ' && rotateCryptText[i+1]=='и' && rotateCryptText[i+2]=='з' && rotateCryptText[i+3]==' ')
+                    || (rotateCryptText[i]==' ' && rotateCryptText[i+1]=='н' && rotateCryptText[i+2]=='а' && rotateCryptText[i+3]==' ')
+                    || (rotateCryptText[i]==' ' && rotateCryptText[i+1]=='ч' && rotateCryptText[i+2]=='т' && rotateCryptText[i+3]=='о' && rotateCryptText[i+4]==' ')
+                    || (rotateCryptText[i]==' ' && rotateCryptText[i+1]=='е' && rotateCryptText[i+2]=='г' && rotateCryptText[i+3]=='о' && rotateCryptText[i+4]==' ')
+                    || (rotateCryptText[i]==' ' && rotateCryptText[i+1]=='т' && rotateCryptText[i+2]=='о' && rotateCryptText[i+3]==',' && rotateCryptText[i+4]==' ')
+                    || (rotateCryptText[i]==',' && rotateCryptText[i+1]==' ' && rotateCryptText[i+2]=='ч' && rotateCryptText[i+3]=='е' && rotateCryptText[i+4]=='м')
+                    || (rotateCryptText[i]==',' && rotateCryptText[i+1]==' ' && rotateCryptText[i+2]=='в' && rotateCryptText[i+3]==' ')
+                    || (rotateCryptText[i]==' ' && rotateCryptText[i+1]=='т' && rotateCryptText[i+2]=='а' && rotateCryptText[i+3]=='м' && rotateCryptText[i+4]==' ')) {
                 result = true;
             }
+
         }
 
         return result;
     }
 
     public static char[] checkCharWithRightRotate(char[] cryptText, int rotate) {
-        char[] newTextWithRightRotate = new char[65536];
+        char[] newTextWithRightRotate = new char[45000];
         int i = 0; // индексы нового массива
         for (Character newChar : cryptText) {
 
@@ -106,7 +112,7 @@ public class BruteForce {
 
 
     public static char[] checkCharWithLeftRotate(char[] cryptText, int rotate) {
-        char[] newTextWithLeftRotate = new char[65536];
+        char[] newTextWithLeftRotate = new char[45000];
         int i = 0; // индексы нового массива
         for (Character newChar : cryptText) {
 

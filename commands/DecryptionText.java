@@ -22,7 +22,7 @@ public class DecryptionText {
         while (bufferedReader.ready()) {
             // read one char:
             Character oneSymbol = (char)bufferedReader.read();
-            if (oneSymbol == ' ' || oneSymbol == '\n') {
+            if (oneSymbol == ' ' || oneSymbol == '\n' || oneSymbol == ',' || oneSymbol == '-' || oneSymbol == '.') {
                 bufferedWriter.write(oneSymbol);
                 continue;
             }
